@@ -1,0 +1,15 @@
+{
+  "name": "scan-for-secrets",
+  "version": "1.0.0",
+  "description": "Scans each file in your repository for AWS access secrets and flags any vulnerabilities.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest test",
+    "start": "node index.js"
+  },
+  "author": "Blair Calderwood",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^24.8.0"
+  }
+}

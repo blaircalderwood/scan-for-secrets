@@ -1,0 +1,1 @@
+const aTestVariable = 'Hi, I am a test variable';
