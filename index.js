@@ -1,7 +1,13 @@
+const path = require('path');
+
 const { scanAllFiles } = require('./keyScanner');
 
-const failedValidationFiles = scanAllFiles(process.argv[2] || './');
+let directoryToScan = path.join(process.cwd(), process.argv[2]);
 
+if(!directoryToScan.endsWith('/')) {
+  directoryToScan += '/';
+}
+const failedValidationFiles = scanAllFiles(directoryToScan);
 if(failedValidationFiles) {
   console.error('You have an access key stored in the following files:');
   failedValidationFiles.forEach(file => console.error(file));
