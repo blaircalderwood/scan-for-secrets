@@ -1,6 +1,6 @@
 {
   "name": "scan-for-secrets",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Scans each file in your repository for AWS access secrets and flags any vulnerabilities.",
   "main": "src/index.js",
   "scripts": {
