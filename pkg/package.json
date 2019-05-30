@@ -1,0 +1,26 @@
+{
+  "name": "scan-for-secrets",
+  "description": "Scans each file in your repository for AWS access secrets and flags any vulnerabilities.",
+  "version": "1.0.0",
+  "license": "ISC",
+  "bin": {
+    "scan-for-secrets": "dist-node/index.bin.js"
+  },
+  "files": [
+    "dist-*/",
+    "bin/"
+  ],
+  "esnext": "dist-src/index.js",
+  "main": "dist-node/index.js",
+  "pika": true,
+  "sideEffects": false,
+  "dependencies": {},
+  "devDependencies": {
+    "@pika/pack": "^0.3.1",
+    "@pika/plugin-build-node": "^0.3.10",
+    "@pika/plugin-simple-bin": "^0.3.10",
+    "@pika/plugin-standard-pkg": "^0.3.10",
+    "@pika/types": "^0.4.0",
+    "jest": "^24.8.0"
+  }
+}
