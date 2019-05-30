@@ -1,7 +1,7 @@
 import { printError } from '../utils/error-logger.js';
 
 export class KeyFoundError extends Error {
-  constructor(dir, fileName) {
+  constructor(dir, fileName, foundRegex) {
     const accessKeyInfo = `Found access key in ${dir}${fileName} - ${foundRegex[0]}`;
     const removeKeyInstruction = 'Please search for and then remove this key.';
 

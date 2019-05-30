@@ -1,10 +1,10 @@
-import {
+const {
   recursivelyListFiles,
   getFileContents,
   scanAllFiles,
   flagIfFileContainsKey,
-} from '../src/keyScanner.js';
-import { FileToCheck } from '../src/models/file-to-check.model';
+} = require('../src/keyScanner.js');
+const { FileToCheck } = require('../src/models/file-to-check.model');
 
 const fakeAccessKey = 'HROJW98L22LOOYHZPPOS';
 const fakeSecretAccessKey = '9J9DfWWoQfaSiifm2UQW0eHHniJOkDD/W1fVhSXz';

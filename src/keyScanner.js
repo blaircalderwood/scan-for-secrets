@@ -1,4 +1,4 @@
-import { ACCESS_KEY_REGEX, SECRET_ACCESS_KEY_REGEX } from './constants.js';
+const { ACCESS_KEY_REGEX, SECRET_ACCESS_KEY_REGEX } = require('./constants.js');
 import { FileToCheck } from './models/file-to-check.model.js';
 import { KeyFoundError } from './errors/key-found.error.js';
 import fs from 'fs';
@@ -33,7 +33,7 @@ export const flagIfFileContainsKey = (file) => {
   return regexs.find(regex => {
     const foundRegex = contents.match(regex);
     if (foundRegex) {
-      throw new KeyFoundError(dir, fileName);
+      throw new KeyFoundError(dir, fileName, foundRegex);
     }
 
     return foundRegex;

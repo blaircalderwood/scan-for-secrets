@@ -12,6 +12,7 @@
   "author": "Blair Calderwood",
   "license": "ISC",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.4.4",
     "@pika/pack": "^0.3.1",
     "@pika/plugin-build-node": "^0.3.10",
     "@pika/plugin-simple-bin": "^0.3.10",
