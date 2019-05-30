@@ -1,9 +1,9 @@
-const { ACCESS_KEY_REGEX, SECRET_ACCESS_KEY_REGEX } = require('./constants');
-const { FileToCheck } = require('./models/file-to-check.model');
-const { KeyFoundError } = require('./errors/key-found.error');
-const fs = require('fs');
+import { ACCESS_KEY_REGEX, SECRET_ACCESS_KEY_REGEX } from './constants.js';
+import { FileToCheck } from './models/file-to-check.model.js';
+import { KeyFoundError } from './errors/key-found.error.js';
+import fs from 'fs';
 
-const recursivelyListFiles = (directory) => {
+export const recursivelyListFiles = (directory) => {
   const scanFolder = (dir, filelist = []) => {
     const files = fs.readdirSync(dir);
     files.forEach(function (file) {
@@ -20,13 +20,13 @@ const recursivelyListFiles = (directory) => {
   return scanFolder(directory);
 }
 
-const getFileContents = ({ dir, file }) => {
+export const getFileContents = ({ dir, file }) => {
   const contents = fs.readFileSync(dir + file, 'utf8');
 
   return new FileToCheck(dir, file, contents);
 }
 
-const flagIfFileContainsKey = (file) => {
+export const flagIfFileContainsKey = (file) => {
   const regexs = [ACCESS_KEY_REGEX, SECRET_ACCESS_KEY_REGEX];
   const {dir, fileName, contents} = file;
 
@@ -40,16 +40,9 @@ const flagIfFileContainsKey = (file) => {
   });
 }
 
-const scanAllFiles = (directory = './') => {
+export const scanAllFiles = (directory = './') => {
   const files = recursivelyListFiles(directory);
   const filesContents = files.map(getFileContents);
 
   filesContents.forEach(flagIfFileContainsKey);
-}
-
-module.exports = {
-  recursivelyListFiles,
-  getFileContents,
-  scanAllFiles,
-  flagIfFileContainsKey,
 }

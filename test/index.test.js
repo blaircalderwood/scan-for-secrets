@@ -1,10 +1,11 @@
-const {
+import {
   recursivelyListFiles,
   getFileContents,
   scanAllFiles,
   flagIfFileContainsKey,
-} = require('../src/keyScanner');
-const { FileToCheck } = require('../src/models/file-to-check.model');
+} from '../src/keyScanner.js';
+import { FileToCheck } from '../src/models/file-to-check.model';
+
 const fakeAccessKey = 'HROJW98L22LOOYHZPPOS';
 const fakeSecretAccessKey = '9J9DfWWoQfaSiifm2UQW0eHHniJOkDD/W1fVhSXz';
 const accessKeyErrorMessage = 'Access key found. Additional information found above.';

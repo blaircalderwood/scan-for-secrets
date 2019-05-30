@@ -1,7 +1,7 @@
-const { printError } = require('./utils/error-logger');
+import { printError } from '../utils/error-logger.js';
 
-class KeyFoundError extends Error {
-  constructor() {
+export class KeyFoundError extends Error {
+  constructor(dir, fileName) {
     const accessKeyInfo = `Found access key in ${dir}${fileName} - ${foundRegex[0]}`;
     const removeKeyInstruction = 'Please search for and then remove this key.';
 
@@ -10,5 +10,3 @@ class KeyFoundError extends Error {
     super('Access key found. Additional information found above.');
   }
 }
-
-module.exports = { KeyFoundError };
