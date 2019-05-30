@@ -9,8 +9,12 @@
     "build": "pack build",
     "publish": "pack publish"
   },
-  "author": "Blair Calderwood",
-  "license": "ISC",
+  "author": "Blair Calderwood <https://github.com/blaircalderwood>",
+  "bugs": {
+    "url": "https://github.com/blaircalderwood/scan-for-secrets/issues"
+  },
+  "homepage": "https://github.com/blaircalderwood/scan-for-secrets#readme",
+  "license": "MIT",
   "keywords": [
     "git",
     "githooks",
