@@ -11,6 +11,22 @@
   },
   "author": "Blair Calderwood",
   "license": "ISC",
+  "keywords": [
+    "git",
+    "githooks",
+    "hook",
+    "hooks",
+    "pre-commit",
+    "precommit",
+    "pre-push",
+    "prepush",
+    "secrets",
+    "aws",
+    "keys",
+    "scan",
+    "authorization",
+    "private keys"
+  ],
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.4.4",
     "@pika/pack": "^0.3.1",
