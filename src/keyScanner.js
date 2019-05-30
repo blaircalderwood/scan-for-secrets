@@ -1,4 +1,4 @@
-const { ACCESS_KEY_REGEX, SECRET_ACCESS_KEY_REGEX } = require('./constants.js');
+import { ACCESS_KEY_REGEX, SECRET_ACCESS_KEY_REGEX } from './constants.js';
 import { FileToCheck } from './models/file-to-check.model.js';
 import { KeyFoundError } from './errors/key-found.error.js';
 import fs from 'fs';

@@ -1,7 +1,6 @@
 const path = require('path');
 
 import { scanAllFiles } from './keyScanner.js';
-console.log('then');
 
 const run = () => {
   console.log('Scanning for secrets');

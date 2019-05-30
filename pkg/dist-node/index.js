@@ -4,6 +4,10 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var fs = _interopDefault(require('fs'));
 
+// AWS key regexs from https://aws.amazon.com/blogs/security/a-safer-way-to-distribute-aws-credentials-to-ec2/
+const ACCESS_KEY_REGEX = /(?<![A-Z0-9])[A-Z0-9]{20}(?![A-Z0-9])/;
+const SECRET_ACCESS_KEY_REGEX = /(?<![A-Za-z0-9/+=])[A-Za-z0-9/+=]{40}(?![A-Za-z0-9/+=])/;
+
 class FileToCheck {
   constructor(dir, fileName, contents) {
     this.dir = dir;
@@ -23,7 +27,7 @@ const printError = (...linesToPrint) => {
 };
 
 class KeyFoundError extends Error {
-  constructor(dir, fileName) {
+  constructor(dir, fileName, foundRegex) {
     const accessKeyInfo = `Found access key in ${dir}${fileName} - ${foundRegex[0]}`;
     const removeKeyInstruction = 'Please search for and then remove this key.';
     printError(accessKeyInfo, removeKeyInstruction);
@@ -32,9 +36,6 @@ class KeyFoundError extends Error {
 
 }
 
-const _require = require('./constants.js'),
-      ACCESS_KEY_REGEX = _require.ACCESS_KEY_REGEX,
-      SECRET_ACCESS_KEY_REGEX = _require.SECRET_ACCESS_KEY_REGEX;
 const recursivelyListFiles = directory => {
   const scanFolder = (dir, filelist = []) => {
     const files = fs.readdirSync(dir);
@@ -69,7 +70,7 @@ const flagIfFileContainsKey = file => {
     const foundRegex = contents.match(regex);
 
     if (foundRegex) {
-      throw new KeyFoundError(dir, fileName);
+      throw new KeyFoundError(dir, fileName, foundRegex);
     }
 
     return foundRegex;
@@ -82,7 +83,6 @@ const scanAllFiles = (directory = './') => {
 };
 
 const path = require('path');
-console.log('then');
 
 const run = () => {
   console.log('Scanning for secrets');
